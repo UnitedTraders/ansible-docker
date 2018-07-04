@@ -44,10 +44,13 @@
 - name: Install docker-compose
   get_url:
     url:   "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}"
-    dest:  /usr/local/bin/docker-compose
+    dest:  "{{ item }}"
     owner: root
     group: root
     mode:  0755
+  with_items:
+    - "/usr/local/bin/docker-compose"
+    - "/usr/bin/docker-compose"
 
 - name: Install docker api client
   pip: name=docker-py version={{ docker_api_version }} state=present
