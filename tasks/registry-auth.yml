@@ -1,0 +1,5 @@
+- name: create .docker folder
+  file: state=directory path=/root/.docker recurse=true
+
+- name: create config.json
+  template: src="docker-auth.json.j2" dest="/root/.docker/config.json"

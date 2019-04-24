@@ -25,3 +25,6 @@
     hour: "2"
     job: "/usr/bin/docker system prune -f"
   tags: docker_prune
+
+- import_tasks: registry-auth.yml
+  when: docker_need_registry_auth
